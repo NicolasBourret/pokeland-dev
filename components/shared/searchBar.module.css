@@ -1,0 +1,9 @@
+.searchBar {
+  width: 300px;
+  display: flex;
+}
+
+.searchBar input {
+  border: none;
+  flex: 1;
+}

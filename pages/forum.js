@@ -1,14 +1,14 @@
 import Head from "next/head";
-
 import Layout from "../components/layout";
 
-export default function Home() {
+export default function Forum() {
   return (
     <Layout>
       <Head>
-        <title>Pokeland - Accueil</title>
+        <title>Pokeland - Equipes</title>
       </Head>
-      <h1>Accueil</h1>
+
+      <h1>Forum</h1>
     </Layout>
   );
 }

@@ -1,0 +1,25 @@
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.main {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  flex: 1;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainContent {
+  flex: 3;
+  margin: 2rem 0 2rem 2rem;
+}
