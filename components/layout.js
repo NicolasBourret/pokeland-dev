@@ -1,6 +1,6 @@
 import Header from "./header/header";
 import Footer from "./footer/footer";
-import SideBar from "./sideBar";
+import SideBar from "./sidebar/sideBar";
 import MainContent from "./mainContent";
 
 import styles from "./layout.module.css";

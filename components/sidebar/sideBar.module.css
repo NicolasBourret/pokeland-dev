@@ -1,0 +1,31 @@
+.sidebar {
+  flex: 1;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar ul {
+  margin-top: 2rem;
+  overflow-y: scroll;
+  padding: 1rem;
+  width: 100%;
+}
+
+.sidebar ul li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.sidebar ul li img {
+  width: 50px;
+}
+
+.sidebar .select {
+  margin: 2rem 0;
+  width: 200px;
+  border: none;
+}

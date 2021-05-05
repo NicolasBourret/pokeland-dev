@@ -41,7 +41,34 @@ img {
 
 ul,
 ol {
+  display: block;
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+body::-webkit-scrollbar,
+ul::-webkit-scrollbar {
+  width: 0.5rem; /* width of the entire scrollbar */
+  height: 30px;
+}
+
+body::-webkit-scrollbar-track,
+ul::-webkit-scrollbar {
+  height: 30px;
+  background: #f6f6f6; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb,
+ul::-webkit-scrollbar {
+  max-height: 30px;
+  background-color: #707070; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 2px solid #f6f6f6; /* creates padding around scroll thumb */
+}
+
+input,
+button,
+select {
+  outline: none;
 }
