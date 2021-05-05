@@ -12,7 +12,7 @@ function TierItem({ item }) {
     >
       <img src={`https://pokepast.es/img/pokemon/${item.dex}-0.png`} />
       <p>{item.pokemon}</p>
-      <p>{item.usage_pct}</p>
+      <p>{Math.round(item.usage_pct * 10) / 10} %</p>
     </li>
   );
 }
@@ -29,17 +29,18 @@ export default function SideBar() {
     setUsage(value);
   }
 
-  function filtreTexte(arr, requete) {
-    return arr.filter(function (el) {
-      return el.pokemon.toLowerCase().indexOf(requete.toLowerCase()) !== -1;
-    });
-  }
-
   function handleSearchInput(value) {
     setSearchValue(value);
-    const itemsValues = Object.values(items);
+    const itemsValues = items;
+
+    function filtreTexte(arr, requete) {
+      return arr.filter(function (el) {
+        return el.pokemon.toLowerCase().indexOf(requete.toLowerCase()) !== -1;
+      });
+    }
 
     const restItems = filtreTexte(itemsValues, value);
+    console.log(restItems);
     setSearchItems(restItems);
   }
 
@@ -49,10 +50,15 @@ export default function SideBar() {
         `https://usage-server.herokuapp.com/data/2021-03/${usage}`
       );
       const data = await res.json();
+      const dataValues = Object.values(data.data);
+
+      dataValues.sort(function (a, b) {
+        return b.usage_pct - a.usage_pct;
+      });
 
       setIsLoaded(true);
-      setItems(data.data);
-      setSearchItems(data.data);
+      setItems(dataValues);
+      setSearchItems(dataValues);
     } catch (error) {
       setIsLoaded(true);
       setError(error);
@@ -74,7 +80,7 @@ export default function SideBar() {
       </div>
     );
   } else {
-    const values = Object.values(searchItems);
+    const values = searchItems;
     sideBarContent = values.map((value) => {
       return <TierItem item={value} key={value.id_} />;
     });
