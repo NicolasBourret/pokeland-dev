@@ -73,7 +73,7 @@ export default function SideBar() {
 
   useEffect(async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/${usage}/`);
+      const res = await fetch(`https://pokeland-dev.vercel.app/api/${usage}/`);
       const data = await res.json();
 
       setIsLoaded(true);
