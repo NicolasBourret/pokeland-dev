@@ -6,13 +6,41 @@ import utilsStyles from "../../styles/utils.module.css";
 import sideBarStyles from "./sideBar.module.css";
 
 function TierItem({ item }) {
+  const pourcent = item[2].replace("%", " ");
+
+  const pourcentNumber = parseFloat(pourcent);
+
+  /*let pokemonName;
+
+  if (item[1].match(/\-/)) {
+    const itemParts = item[1].split("-");
+    const newItem = itemParts[0] + itemParts[1];
+
+    pokemonName = newItem.toLowerCase();
+  } else {
+    pokemonName = item[1].toLowerCase();
+  }*/
+
+  /*useEffect(async () => {
+    try {
+      const res = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonName.trim()}`
+      );
+      const data = await res.json();
+
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);*/
+
   return (
     <li
       className={`${utilsStyles.boxShadow} ${utilsStyles.borderCircle} ${utilsStyles.padding1rem}`}
     >
-      <img src={`https://pokepast.es/img/pokemon/${item.dex}-0.png`} />
-      <p>{item.pokemon}</p>
-      <p>{Math.round(item.usage_pct * 10) / 10} %</p>
+      <img src={``} />
+      <p>{item[1]}</p>
+      <p>{Math.round(pourcentNumber * 10) / 10} %</p>
     </li>
   );
 }
@@ -21,7 +49,7 @@ export default function SideBar() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState({});
-  const [usage, setUsage] = useState("gen8ou");
+  const [usage, setUsage] = useState("gen8uu-1760");
   const [searchValue, setSearchValue] = useState("");
   const [searchItems, setSearchItems] = useState([]);
 
@@ -35,30 +63,22 @@ export default function SideBar() {
 
     function filtreTexte(arr, requete) {
       return arr.filter(function (el) {
-        return el.pokemon.toLowerCase().indexOf(requete.toLowerCase()) !== -1;
+        return el[1].toLowerCase().indexOf(requete.toLowerCase()) !== -1;
       });
     }
 
     const restItems = filtreTexte(itemsValues, value);
-    console.log(restItems);
     setSearchItems(restItems);
   }
 
   useEffect(async () => {
     try {
-      const res = await fetch(
-        `https://usage-server.herokuapp.com/data/2021-03/${usage}`
-      );
+      const res = await fetch(`http://localhost:3000/api/${usage}/`);
       const data = await res.json();
-      const dataValues = Object.values(data.data);
-
-      dataValues.sort(function (a, b) {
-        return b.usage_pct - a.usage_pct;
-      });
 
       setIsLoaded(true);
-      setItems(dataValues);
-      setSearchItems(dataValues);
+      setItems(data);
+      setSearchItems(data);
     } catch (error) {
       setIsLoaded(true);
       setError(error);
@@ -82,7 +102,7 @@ export default function SideBar() {
   } else {
     const values = searchItems;
     sideBarContent = values.map((value) => {
-      return <TierItem item={value} key={value.id_} />;
+      return <TierItem item={value} key={value[0]} />;
     });
   }
 
