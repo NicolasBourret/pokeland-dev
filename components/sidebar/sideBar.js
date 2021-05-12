@@ -10,30 +10,6 @@ function TierItem({ item }) {
 
   const pourcentNumber = parseFloat(pourcent);
 
-  /*let pokemonName;
-
-  if (item[1].match(/\-/)) {
-    const itemParts = item[1].split("-");
-    const newItem = itemParts[0] + itemParts[1];
-
-    pokemonName = newItem.toLowerCase();
-  } else {
-    pokemonName = item[1].toLowerCase();
-  }*/
-
-  /*useEffect(async () => {
-    try {
-      const res = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokemonName.trim()}`
-      );
-      const data = await res.json();
-
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);*/
-
   return (
     <li
       className={`${utilsStyles.boxShadow} ${utilsStyles.borderCircle} ${utilsStyles.padding1rem}`}
@@ -49,7 +25,7 @@ export default function SideBar() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState({});
-  const [usage, setUsage] = useState("gen8uu-1760");
+  const [usage, setUsage] = useState("2021-04/gen8uu-1760");
   const [searchValue, setSearchValue] = useState("");
   const [searchItems, setSearchItems] = useState([]);
 

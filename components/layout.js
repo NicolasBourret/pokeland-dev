@@ -5,10 +5,10 @@ import MainContent from "./mainContent";
 
 import styles from "./layout.module.css";
 
-export default function Layout({ children }) {
+export default function Layout({ children, user }) {
   return (
     <div className={styles.layout}>
-      <Header />
+      <Header user={user} />
       <main className={styles.main}>
         <SideBar />
         <MainContent>{children}</MainContent>

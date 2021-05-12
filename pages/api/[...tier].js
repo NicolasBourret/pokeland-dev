@@ -2,8 +2,9 @@
 
 export default (req, res) => {
   const { tier } = req.query;
-  console.log(tier);
-  const myFetch = fetch(`https://www.smogon.com/stats/2021-04/${tier}.txt`);
+  const myFetch = fetch(
+    `https://www.smogon.com/stats/${tier[0]}/${tier[1]}.txt`
+  );
 
   myFetch.then(function (response) {
     return response.text().then((text) => {
