@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 
 import MainNavigation from "./mainNavigation";
@@ -11,9 +12,9 @@ function NavProfile() {
     <div
       className={`${headerStyles.navProfile} ${utilsStyles.boxShadow} ${utilsStyles.borderCircle} ${utilsStyles.padding1rem}`}
     >
-      <a href="#" className={`${headerStyles.link}`}>
-        Voir mon Profil
-      </a>
+      <Link href="/profile">
+        <a className={`${headerStyles.link}`}>Voir mon Profil</a>
+      </Link>
       <a
         href="/api/auth/logout"
         className={`${utilsStyles.borderCircle} ${utilsStyles.boxShadow} ${utilsStyles.subTitle} ${utilsStyles.darkBackground} ${utilsStyles.lightText}`}

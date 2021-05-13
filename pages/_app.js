@@ -1,11 +1,14 @@
 import { UserProvider } from "@auth0/nextjs-auth0";
+import { TierProvider } from "../contexts/tierContext";
 
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     <UserProvider>
-      <Component {...pageProps} />;
+      <TierProvider>
+        <Component {...pageProps} />;
+      </TierProvider>
     </UserProvider>
   );
 }

@@ -1,0 +1,26 @@
+.profile {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.userInfos,
+.userActions {
+  flex: 1;
+}
+
+.userInfos div {
+  display: flex;
+}
+
+.userInfos > p {
+  font-size: 2rem;
+}
+
+.userInfos div img {
+  height: 110px;
+}
+
+.userInfos div h2 {
+  margin-left: 4rem;
+}
