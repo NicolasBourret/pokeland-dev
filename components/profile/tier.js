@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { TierContext } from "../../contexts/tierContext";
 
 export default function Tier({ tier }) {
+  console.log(tier);
   const [date, setDate] = useState("");
   const { updateTier, deleteTier } = useContext(TierContext);
 

@@ -7,7 +7,7 @@ import { tiers, minifyRecords } from "../api/db/utils/airtable";
 import { TierContext } from "../../contexts/tierContext";
 
 import profileStyles from "../../styles/profile.module.css";
-import Tier from "./tier";
+import Tier from "../../components/profile/tier";
 
 export default withPageAuthRequired(function Profile({ initialTiers, user }) {
   const { tiers, setTiers } = useContext(TierContext);
