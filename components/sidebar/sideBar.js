@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import SearchBar from "../shared/searchBar";
 import Select from "./select";
 
@@ -7,7 +8,6 @@ import sideBarStyles from "./sideBar.module.css";
 
 function TierItem({ item }) {
   const pourcent = item[2].replace("%", " ");
-
   const pourcentNumber = parseFloat(pourcent);
 
   return (

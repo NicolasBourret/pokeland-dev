@@ -1,15 +1,33 @@
+import { useContext } from "react";
+
+import { TierContext } from "../../contexts/tierContext";
+
 import utilsStyles from "../../styles/utils.module.css";
 import sideBarStyles from "./sideBar.module.css";
 
 export default function Select({ onChange, value }) {
+  const { tiers } = useContext(TierContext);
   return (
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={`${utilsStyles.boxShadow} ${utilsStyles.borderCircle} ${utilsStyles.padding1rem} ${sideBarStyles.select}`}
     >
-      <optgroup label="Gen 8">
-        <option value="2021-04/gen8ubers-1760">Ubers</option>
+      {tiers &&
+        tiers.map((tier) => (
+          <option
+            value={`${tier.fields.date}/${tier.fields.name}`}
+            key={tier.id}
+          >
+            {tier.fields.name}
+          </option>
+        ))}
+    </select>
+  );
+}
+
+/**
+ *         <option value="2021-04/gen8ubers-1760">Ubers</option>
         <option value="2021-04/gen8ou-1825">OverUsed</option>
         <option value="2021-04/gen8uu-1760">UU</option>
         <option value="2021-04/gen8ru-1760">RU</option>
@@ -37,6 +55,4 @@ export default function Select({ onChange, value }) {
         <option value="2021-04/gen8doublesou-1825">Doubles OU</option>
         <option value="2021-04/gen8doublesuu-1760">Doubles UU</option>
       </optgroup>
-    </select>
-  );
-}
+ */

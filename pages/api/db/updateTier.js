@@ -1,6 +1,7 @@
+import OwnsRecords from "../middleware/ownsRecords";
 import { tiers, getMinifyRecord } from "./utils/airtable";
 
-export default async (req, res) => {
+export default OwnsRecords(async (req, res) => {
   const { id, fields } = req.body;
 
   try {
@@ -17,4 +18,4 @@ export default async (req, res) => {
       msg: "Il y à eu un problème lors de la récupération des données dans la base",
     });
   }
-};
+});

@@ -18,7 +18,7 @@ const TierProvider = ({ children }) => {
 
   const addTier = async ({ date, name }) => {
     try {
-      const res = await fetch("/api/db/createTiers", {
+      const res = await fetch("/api/db/createTier", {
         method: "POST",
         body: JSON.stringify({ date, name }),
         headers: { "Content-Type": "application/json" },

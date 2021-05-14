@@ -1,20 +1,30 @@
-import { tiers, getMinifyRecord } from "./utils/airtable";
+import { withApiAuthRequired, getSession } from "@auth0/nextjs-auth0";
 
-export default async (req, res) => {
-  const { id, fields } = req.body;
+import { tiers } from "./utils/airtable";
+
+export default withApiAuthRequired(async (req, res) => {
+  const { user } = await getSession(req, res);
+  const { date, name } = req.body;
 
   try {
-    const updatedRecords = await tiers.update([
+    const createdRecords = await tiers.create([
       {
-        id,
-        fields,
+        fields: {
+          date,
+          name,
+          userId: user.sub,
+        },
       },
     ]);
+    const createdRecord = {
+      id: createdRecords[0].id,
+      fields: createdRecords[0].fields,
+    };
 
-    res.status(200).json(getMinifyRecord(updatedRecords[0]));
+    res.status(200).json(createdRecord);
   } catch (error) {
     res.status(500).json({
       msg: "Il y à eu un problème lors de la récupération des données dans la base",
     });
   }
-};
+});
